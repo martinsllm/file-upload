@@ -8,4 +8,8 @@ export class FilesService {
   async create(file: Express.Multer.File) {
     return await this.repository.create(file);
   }
+
+  async get() {
+    return await this.repository.get();
+  }
 }

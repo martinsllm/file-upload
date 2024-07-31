@@ -1,5 +1,6 @@
 import {
   Controller,
+  Get,
   Post,
   UploadedFile,
   UseInterceptors,
@@ -16,5 +17,10 @@ export class FilesController {
   @UseInterceptors(FileInterceptor('file', multerConfig))
   async upload(@UploadedFile() file: Express.Multer.File) {
     return this.filesService.create(file);
+  }
+
+  @Get()
+  async get() {
+    return this.filesService.get();
   }
 }

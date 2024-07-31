@@ -17,4 +17,8 @@ export class FilesRepository {
       data: uploadedFile,
     });
   }
+
+  async get() {
+    return await this.prismaService.file.findMany();
+  }
 }
