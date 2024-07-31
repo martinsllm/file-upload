@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { globalModules } from './modules/global';
 
 @Module({
-  imports: [ConfigModule.forRoot()],
+  imports: [...globalModules],
   controllers: [],
   providers: [],
 })
