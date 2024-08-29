@@ -13,7 +13,7 @@ datasource db {
   url = env("DATABASE_URL")
 }
 
-model File {
+model Files {
   id String @default(uuid()) @id
   filename String
   length Int

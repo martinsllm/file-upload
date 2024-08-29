@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/modules/global/prisma/prisma.service';
+import { IFilesRepository } from '../interfaces/files.interface';
 
 @Injectable()
-export class FilesRepository {
+export class FilesRepository implements IFilesRepository {
   constructor(private readonly prismaService: PrismaService) {}
 
   async create(file: Express.Multer.File) {
@@ -13,12 +14,12 @@ export class FilesRepository {
       url: file.path,
     };
 
-    return await this.prismaService.file.create({
+    return await this.prismaService.files.create({
       data: uploadedFile,
     });
   }
 
   async get() {
-    return await this.prismaService.file.findMany();
+    return await this.prismaService.files.findMany();
   }
 }
